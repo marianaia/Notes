@@ -1,0 +1,15 @@
+[package]
+name = "Notes"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = { version = "0.5", features = ["headers"] }
+dotenvy = "0.15"
+dotenvy_macro = "0.15"
+sea-orm = { version = "0.10.7", features = ["sqlx-postgres", "runtime-tokio-rustls"] }
+serde = { version = "1", features = ["derive"] }
+sqlx-postgres = "0.0.0"
+tokio = { version = "1", features = ["full"] }
