@@ -1,4 +1,4 @@
-use crate::db::notes;
+use crate::database::notes;
 use axum::{http::StatusCode, response::IntoResponse, Extension, Json};
 use sea_orm::{ActiveModelTrait, DatabaseConnection, Set};
 use serde::Deserialize;

@@ -1,4 +1,4 @@
-use crate::db::notes::{self, Entity as Notes};
+use crate::database::notes::{self, Entity as Notes};
 use axum::{
     extract::{Path, Query},
     http::StatusCode,

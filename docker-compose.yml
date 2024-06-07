@@ -1,24 +1,31 @@
 services:
+# PostgreSQL database service
   postgres:
     container_name: postgres_demo
     image: postgres:latest
-    environment:
-      POSTGRES_USER: super_admin
-      POSTGRES_PASSWORD: SomeSecretPassword
-      PGDATA: /data/postgres
+    env_file:
+      - .env
     volumes:
        - postgres-db:/data/postgres
        - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
 
+    healthcheck:
+      test: ["CMD-SHELL", "psql -U ${POSTGRES_USER} -q -d ${POSTGRES_DB} -c \"SELECT 'ready';\""]
+      interval: 10s
+      timeout: 30s
+      retries: 5
+      start_period: 5s
+
+# pgAdmin for managing PostgreSQL
   pgadmin: 
     image: dpage/pgadmin4
     ports:
       - "8080:80"
+    env_file:
+      - .env
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: password
       PGADMIN_LISTEN_PORT: 80
     volumes:
       - pgadmin-db:/var/lib/pgadmin

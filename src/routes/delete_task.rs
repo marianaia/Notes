@@ -1,4 +1,4 @@
-use crate::db::notes::Entity as Quote;
+use crate::database::notes::Entity as Quote;
 use axum::{extract::Path, http::StatusCode, Extension};
 use sea_orm::{DatabaseConnection, EntityTrait};
 

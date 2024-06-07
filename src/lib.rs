@@ -1,4 +1,5 @@
-mod db;
+mod database;
+mod models;
 mod routes;
 
 use sea_orm::Database;
